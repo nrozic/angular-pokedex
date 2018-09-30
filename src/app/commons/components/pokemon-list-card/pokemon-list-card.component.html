@@ -1,0 +1,48 @@
+<div class="field">
+    <label class="label">Filter Pokemons by name</label>
+    <div class="control">
+        <input [(ngModel)]="filter"
+            class="input"
+            type="text"
+            placeholder="Enter pokemon name">
+    </div>
+</div>
+
+<br>
+
+<div *ngIf="pokemons">
+    <div *ngFor="let pokemon of pokemons | filter : filter"
+        class="card has-bottom-margin">
+
+        <div class="card-content">
+            <div class="media">
+                <div class="media-left">
+                    <figure class="image pokemon-avatar is-70x70">
+                        <img appLoadImage
+                            [src]="pokemon.icon"
+                            default="assets/images/no-image.png"
+                            class="img"
+                            alt="Placeholder image">
+                    </figure>
+                </div>
+
+                <div class="media-content has-text-centered">
+                    <h2 class="title has-extra-padding-top is-4 is-capitalized">{{ pokemon.name }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <footer class="card-footer">
+            <a href="#"
+                class="card-footer-item">
+                <span class="icon">
+                    <i class="material-icons">favorite_border</i>
+                </span>
+            </a>
+            <!-- <a href="#"
+                class="card-footer-item">Edit</a> -->
+            <a [routerLink]="pokemon.href"
+                class="card-footer-item">Details</a>
+        </footer>
+    </div>
+</div>

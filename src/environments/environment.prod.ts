@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+    production: true,
+    appTitle: 'Pokedex',
+    titleSeparator: ' | ',
+    apiUrl: 'https://pokeapi.co/api/v2/'
 };
