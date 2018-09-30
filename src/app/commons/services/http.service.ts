@@ -3,6 +3,18 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
+export enum HttpStatusCodes {
+    OK = 200,
+    badRequest = 400,
+    notAuthorized = 401,
+    forbidden = 403,
+    notFound = 404,
+    internalServerError = 500,
+    badGateway = 502,
+    serviceUnavailable = 503,
+    gatewayTimeout = 504
+}
+
 @Injectable({
     providedIn: 'root'
 })

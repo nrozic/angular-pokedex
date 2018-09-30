@@ -39,4 +39,29 @@ export class HelperService {
 
         return result;
     }
+
+    static saveStringToLocalStorage(key: string, value: string) {
+        localStorage.setItem(key, value);
+    }
+
+    static saveObjectToLocalStorage(key: string, object: any) {
+        this.saveStringToLocalStorage(key, JSON.stringify(object));
+    }
+
+    static getStringFromLocalStorage(key: string): string {
+        return localStorage.getItem(key);
+    }
+
+    static getObjectFromLocalStorage(key: string): any {
+        return JSON.parse(this.getStringFromLocalStorage(key));
+    }
+
+    static removeItemFromLocalStorage(key: string) {
+        localStorage.removeItem(key);
+    }
+
+    static clearLocalStorage() {
+        localStorage.clear();
+    }
+
 }

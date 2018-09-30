@@ -5,9 +5,10 @@ export enum _ENDPOINTS {
 }
 
 export enum _ROUTES {
-    home = 'home/',
-    pokemon = 'pokemon/',
-    notFound = '404/'
+    home = 'home',
+    pokemon = 'pokemon',
+    myPokemons = 'my-pokemons',
+    notFound = '404'
 }
 
 export enum _SPRITES {
@@ -16,3 +17,5 @@ export enum _SPRITES {
     backDefault = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/',
     backShiny = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shimy/',
 }
+
+export const _MY_POKEMONS_KEY = 'my-pokemons';

@@ -1,6 +1,10 @@
-import { Component, OnInit, Input, HostListener, ViewChildren } from '@angular/core';
-import { IPokemonList } from '../../models/pokemon.model';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
+
+import { IPokemonList } from 'src/app/commons/models/pokemon.model';
 import { AppPreloadImageDirective } from 'src/app/commons/directives/preload-image.directive';
+import { HelperService } from 'src/app/commons/services/helper.service';
+import { _MY_POKEMONS_KEY } from 'src/app/commons/constants/constants';
+import { PokemonsService } from '../../services/pokemons.service';
 
 const LIMIT = 4;
 
@@ -15,7 +19,8 @@ export class PokemonListCardComponent implements OnInit {
     private _lastY: number;
 
     @Input() pokemons: IPokemonList[];
-    filter = 'pik'; // Initial filter value is set to speedup initial page load. Lazy solution, but ensures significant preformance boost
+    @Input() filter: string; // Initial filter value is set to speedup initial page load.
+    myPokemons: IPokemonList[] = [];
     visibleList: IPokemonList[];
     filteredText: string;
 
@@ -27,16 +32,48 @@ export class PokemonListCardComponent implements OnInit {
         // this.updateVisibleListOnTouch(event);
     }
 
-    constructor() { }
+    constructor(
+        private pokemonsService: PokemonsService
+    ) { }
 
     ngOnInit() {
         // NOTE: in order to use virtual scroll, in *ngFor loop in template pokemons collection should be replaced
         // with visibleList collection and host listeners needs to be enabled and setVisibleList method should be called onInit
         // this.setVisibleList();
+        this.updateMyPokemonsList();
     }
 
+    /**
+     * Method to reset search filter
+     *
+     * @memberof PokemonListCardComponent
+     */
     resetFilter() {
         this.filter = null;
+    }
+
+    /**
+     * Method to add new pokemons to my pokemons list
+     *
+     * @param {IPokemonList} pokemon
+     * @returns
+     * @memberof PokemonListCardComponent
+     */
+    togglePokemonInMyPokemonsList(event: MouseEvent, pokemon: IPokemonList) {
+        event.preventDefault();
+        this.pokemonsService.toggleMyPokemonsList(pokemon, this.myPokemons);
+        this.updateMyPokemonsList();
+    }
+
+    /**
+     * Method to update pokemons list after adding new pokemons
+     *
+     * @private
+     * @memberof PokemonListCardComponent
+     */
+    private updateMyPokemonsList() {
+        this.myPokemons = [];
+        this.myPokemons = this.pokemonsService.fetchMyPokemonsList();
     }
 
     /**

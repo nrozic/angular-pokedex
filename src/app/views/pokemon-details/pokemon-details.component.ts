@@ -61,10 +61,8 @@ export class PokemonDetailsComponent implements OnInit, AfterViewInit, OnDestroy
     }
 
     private loadPokemonDetails(id: string) {
-        console.log('loading details for pokemon with id ' + id + ' type', typeof id);
         const sub = this.pokmeonService.getPokemon(id).subscribe(
             response => {
-                console.log('pokemon response in component:', response);
                 this.pokemon = response;
                 this.setTitle();
                 this.imageType = 'default';

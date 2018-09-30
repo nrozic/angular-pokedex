@@ -23,7 +23,6 @@ export class LoaderService {
     }
 
     private set numberOfRequests(newValue: number) {
-        // console.log('numberOfRequests: ', newValue);
         this._numberOfRequests = newValue;
         this.toggleLoadingSpinnerVisiblity(newValue !== 0);
     }

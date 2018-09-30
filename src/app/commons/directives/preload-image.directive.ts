@@ -9,7 +9,6 @@ export class AppPreloadImageDirective implements AfterContentInit {
     @HostBinding('class') className;
 
     @HostListener('error') onError() {
-        console.log('ERROR EVENT updateUrl to ' + this.default);
         this.updateSrc(this.default);
     }
 

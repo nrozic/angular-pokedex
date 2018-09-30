@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment.prod';
+import { _ROUTES } from '../../../commons/constants/constants';
 
 export interface IMenuItem {
     href: string;
@@ -11,7 +12,7 @@ export interface IMenuItem {
 
 const APP_MENU = [
     { href: '/', title: 'Home' },
-    { href: '/my-pokemons', title: 'My Pokemons' },
+    { href: _ROUTES.myPokemons, title: 'My Pokemons' },
 ];
 
 @Component({

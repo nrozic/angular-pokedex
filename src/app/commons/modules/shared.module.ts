@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -15,6 +15,8 @@ import { PokemonListCardComponent } from 'src/app/commons/components/pokemon-lis
 import { AppPreloadImageDirective } from 'src/app/commons/directives/preload-image.directive';
 import { FilterPipe } from 'src/app/commons/pipes/filter.pipe';
 import { PokemonDetailsComponent } from '../../views/pokemon-details/pokemon-details.component';
+import { MyPokemonsComponent } from '../../views/my-pokemons/my-pokemons.component';
+import { ErrorsHandler } from 'src/app/commons/error-handlers/errors-handler';
 
 @NgModule({
     imports: [
@@ -34,6 +36,7 @@ import { PokemonDetailsComponent } from '../../views/pokemon-details/pokemon-det
         AppPreloadImageDirective,
         FilterPipe,
         PokemonDetailsComponent,
+        MyPokemonsComponent,
     ],
     providers: [
         // Providing http request interceptor
@@ -41,6 +44,10 @@ import { PokemonDetailsComponent } from '../../views/pokemon-details/pokemon-det
             provide: HTTP_INTERCEPTORS,
             useClass: HttpRequestsInterceptor,
             multi: true
+        },
+        {
+            provide: ErrorHandler,
+            useClass: ErrorsHandler
         },
     ],
     exports: [

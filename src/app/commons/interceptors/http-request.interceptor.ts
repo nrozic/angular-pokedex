@@ -31,7 +31,6 @@ export class HttpRequestsInterceptor implements HttpInterceptor {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
         });
-        // console.log('HTTPRequestsInterceptor defaultHttpHeaders: ', httpHeader);
         return httpHeader;
     }
 }
