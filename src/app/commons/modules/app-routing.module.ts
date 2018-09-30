@@ -4,12 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from 'src/app/views/home/home.component';
 import { NotFoundComponent } from 'src/app/views/not-found/not-found.component';
+import { PokemonDetailsComponent } from '../../views/pokemon-details/pokemon-details.component';
+import { _ROUTES } from '../constants/constants';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
-    // { path: ':slug/:id', component: SinglePostComponent },
-    { path: '404', component: NotFoundComponent },
-    { path: '**', redirectTo: '/404', pathMatch: 'full' }
+    { path: _ROUTES.pokemon + ':id', component: PokemonDetailsComponent },
+    { path: _ROUTES.notFound, component: NotFoundComponent },
+    { path: '**', redirectTo: _ROUTES.notFound, pathMatch: 'full' }
 ];
 
 @NgModule({

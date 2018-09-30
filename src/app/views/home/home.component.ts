@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 
-import { PokemonsService } from '../../commons/services/pokemons.service';
-import { IPokemonList } from '../../commons/models/pokemon.model';
+import { PokemonsService } from 'src/app/commons/services/pokemons.service';
+import { IPokemonList } from 'src/app/commons/models/pokemon.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-home',
@@ -16,15 +18,21 @@ export class HomeComponent implements OnInit, OnDestroy {
     title = 'Pokedex';
     pokemonsList: IPokemonList[];
     constructor(
-        private pokemonService: PokemonsService
+        private pokemonService: PokemonsService,
+        private titleService: Title
     ) { }
 
     ngOnInit() {
         this.fetchPokemons();
+        this.setTitle();
     }
 
     ngOnDestroy() {
         this._subscriptions.unsubscribe();
+    }
+
+    private setTitle() {
+        this.titleService.setTitle('Homepage' + environment.titleSeparator + environment.appTitle);
     }
 
     /**

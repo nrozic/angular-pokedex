@@ -14,6 +14,7 @@ import { LoaderComponent } from 'src/app/views/loader/loader.component';
 import { PokemonListCardComponent } from 'src/app/commons/components/pokemon-list-card/pokemon-list-card.component';
 import { AppPreloadImageDirective } from 'src/app/commons/directives/preload-image.directive';
 import { FilterPipe } from 'src/app/commons/pipes/filter.pipe';
+import { PokemonDetailsComponent } from '../../views/pokemon-details/pokemon-details.component';
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { FilterPipe } from 'src/app/commons/pipes/filter.pipe';
         LoaderComponent,
         PokemonListCardComponent,
         AppPreloadImageDirective,
-        FilterPipe
+        FilterPipe,
+        PokemonDetailsComponent,
     ],
     providers: [
         // Providing http request interceptor

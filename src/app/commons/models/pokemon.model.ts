@@ -1,5 +1,5 @@
 import { Deserialize } from 'src/app/commons/models/deserialize.model';
-import { _SPRITES } from '../constants/constants';
+import { _SPRITES, _ROUTES } from '../constants/constants';
 
 export class IPokemonList extends Deserialize {
     name: string;
@@ -17,7 +17,7 @@ export class IPokemonList extends Deserialize {
     }
 
     get href(): string {
-        return '/pokemon/' + this.id;
+        return _ROUTES.pokemon + this.id;
     }
 
     get icon(): string {

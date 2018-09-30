@@ -1,0 +1,78 @@
+<section *ngIf="ready"
+    class="hero is-primary">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <figure class="image is-128x128 is-image-centered">
+                <img class="is-rounded has-background-white-ter"
+                    [src]="currentImage">
+            </figure>
+
+            <br>
+
+            <h1 class="title is-1 has-text-centered">
+                {{ pokemon.name }}
+            </h1>
+
+            <h2 class="subtitle">
+                ID:&nbsp;{{ pokemon.id }},&nbsp;base experience: {{ pokemon.base_experience }}
+            </h2>
+
+            <div class="tags abilities">
+                <span *ngFor="let item of pokemon.abilities"
+                    class="tag is-warning">
+                    {{ item.ability.name }}
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div *ngIf="ready"
+    class="container section">
+
+    <h2 class="title is-4">Types:</h2>
+
+    <div class="tags">
+        <span *ngFor="let item of pokemon.types"
+            class="tag is-danger">
+            {{ item.type.name }}
+        </span>
+    </div>
+
+    <nav class="panel">
+
+        <p *ngIf="pokemon.held_items"
+            class="panel-heading">
+            Held items
+        </p>
+
+
+        <a *ngFor="let item of pokemon.held_items"
+            class="panel-block">
+            <span class="panel-icon">
+                <i class="fas fa-book"
+                    aria-hidden="true"></i>
+            </span>
+            {{ item.item.name }}
+        </a>
+    </nav>
+
+    <nav class="panel">
+
+        <p *ngIf="pokemon.abilities"
+            class="panel-heading">
+            Moves
+        </p>
+
+
+        <a *ngFor="let item of pokemon.moves"
+            class="panel-block">
+            <span class="panel-icon">
+                <i class="fas fa-book"
+                    aria-hidden="true"></i>
+            </span>
+            <strong>{{ item.move.name }}</strong>
+        </a>
+    </nav>
+</div><!-- /.container -->

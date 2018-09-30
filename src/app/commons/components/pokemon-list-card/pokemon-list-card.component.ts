@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostListener, ViewChildren } from '@angular/core';
 import { IPokemonList } from '../../models/pokemon.model';
 import { AppPreloadImageDirective } from 'src/app/commons/directives/preload-image.directive';
 
@@ -15,8 +15,9 @@ export class PokemonListCardComponent implements OnInit {
     private _lastY: number;
 
     @Input() pokemons: IPokemonList[];
-    filter = 'bu'; // Initial filter value is set to speedup initial page load. Lazy solution, but ensures significant preformance boost
+    filter = 'pik'; // Initial filter value is set to speedup initial page load. Lazy solution, but ensures significant preformance boost
     visibleList: IPokemonList[];
+    filteredText: string;
 
     @HostListener('window:wheel', ['$event']) onScroll(event) {
         // this.updateVisibleList(event);
@@ -32,6 +33,10 @@ export class PokemonListCardComponent implements OnInit {
         // NOTE: in order to use virtual scroll, in *ngFor loop in template pokemons collection should be replaced
         // with visibleList collection and host listeners needs to be enabled and setVisibleList method should be called onInit
         // this.setVisibleList();
+    }
+
+    resetFilter() {
+        this.filter = null;
     }
 
     /**

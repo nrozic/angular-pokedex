@@ -14,3 +14,7 @@
 @import 'components/footer.scss';
 @import 'components/navbar.scss';
 @import 'components/home.scss';
+// Overriding, customizing and extending Bulma
+.is-image-centered {
+    margin: 10px auto !important;
+}
