@@ -1,0 +1,62 @@
+<div class="field">
+    <label class="label">Filter Pokemons by name</label>
+    <div class="control">
+        <input [(ngModel)]="filter"
+            class="input"
+            type="text"
+            placeholder="Enter pokemon name">
+
+        <p *ngIf="filter">
+            <br>
+            Filter <strong>{{ filter }}</strong> applied.
+            <a href="#"
+                (click)="resetFilter()">Remove filter</a>
+        </p>
+    </div>
+</div>
+
+<br>
+
+<div>
+    <div *ngFor="let pokemon of pokemons | filter : filter"
+        #filter
+        class="card has-bottom-margin">
+
+        <h3 *ngIf="!pokemon">No results!</h3>
+
+        <div class="card-content">
+            <div class="media">
+                <div class="media-left">
+                    <figure class="image pokemon-avatar is-70x70">
+                        <img appLoadImage
+                            [src]="pokemon.icon"
+                            default="assets/images/no-image.png"
+                            class="img"
+                            alt="Placeholder image">
+                    </figure>
+                </div>
+
+                <div class="media-content has-text-centered">
+                    <h2 class="title has-extra-padding-top is-4 is-capitalized">{{ pokemon.name }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <footer class="card-footer">
+            <a href="#"
+                class="card-footer-item"
+                (click)="togglePokemonInMyPokemonsList($event, pokemon)">
+                <span class="icon">
+                    <i *ngIf="pokemon.isFavorite"
+                        class="material-icons">favorite</i>
+                    <i *ngIf="!pokemon.isFavorite"
+                        class="material-icons">favorite_border</i>
+                </span>
+            </a>
+            <!-- <a href="#"
+                class="card-footer-item">Edit</a> -->
+            <a [routerLink]="pokemon.href"
+                class="card-footer-item">Details</a>
+        </footer>
+    </div>
+</div>

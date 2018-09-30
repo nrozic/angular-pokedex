@@ -1,0 +1,42 @@
+<nav class="navbar is-primary is-fixed-top"
+    role="navigation"
+    aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item"
+            routerLink="/">
+            Pokedex
+        </a>
+
+        <a role="button"
+            class="navbar-burger"
+            [class.is-active]="isMenuActive"
+            aria-label="menu"
+            aria-expanded="false"
+            (click)="toggleMenu()">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div #mainmenu
+        class="navbar-menu"
+        [class.is-active]="isMenuActive">
+        <div class="navbar-start">
+            <!-- navbar items -->
+        </div>
+
+        <ul class="navbar-end">
+            <!-- navbar items -->
+            <li *ngFor="let item of menuItems"
+                class="navbar-item">
+                <a [routerLink]="item.href"
+                    routerLinkActive="is-active"
+                    class="button"
+                    (click)="toggleMenu(item.title)">
+                    {{ item.title }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

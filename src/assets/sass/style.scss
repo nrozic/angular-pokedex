@@ -1,0 +1,20 @@
+@charset "utf-8";
+// Importing variables before Bulma files so we can override bulmas ba+variables
+@import 'components/variables.scss';
+// Importing Bulma
+@import '../../../node_modules/bulma/sass/utilities/_all.sass';
+@import '../../../node_modules/bulma/sass/base/_all.sass';
+@import '../../../node_modules/bulma/sass/components/_all.sass';
+@import '../../../node_modules/bulma/sass/elements/_all.sass';
+@import '../../../node_modules/bulma/sass/grid/_all.sass';
+@import '../../../node_modules/bulma/sass/layout/_all.sass'; // Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+// Importing our custom styles
+@import 'components/header.scss';
+@import 'components/footer.scss';
+@import 'components/navbar.scss';
+@import 'components/home.scss';
+// Overriding, customizing and extending Bulma
+.is-image-centered {
+    margin: 10px auto !important;
+}

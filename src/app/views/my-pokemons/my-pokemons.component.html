@@ -1,0 +1,10 @@
+<section class="section container">
+    <app-pokemon-list-card *ngIf="myPokemons"
+        [pokemons]="myPokemons"
+        (click)="updateMyPokemonsList()"></app-pokemon-list-card>
+
+    <div *ngIf="!myPokemons || myPokemons.length < 1"
+        class="section">
+        Your My Pokemons list seems to be empty, go <a [routerLink]="'/'">back</a> and add one now!
+    </div>
+</section>
